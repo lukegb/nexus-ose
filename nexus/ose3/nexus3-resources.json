@@ -448,7 +448,7 @@
                               "volumeMounts": [
                                  {
                                     "name": "pvol",
-                                    "mountPath": "/sonatype-work"
+                                    "mountPath": "/nexus-data"
                                  }
                               ],
                               "livenessProbe": {
