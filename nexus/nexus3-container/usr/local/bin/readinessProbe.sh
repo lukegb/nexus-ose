@@ -6,7 +6,7 @@ then
 fi
 
 HEALTH_CHECK_URL=${NEXUS_BASE_URL}/service/metrics/healthcheck
-RESPONSE=$(wget -qO- --user admin --password admin123 --auth-no-challenge --no-cache --tries=1 --timeout=1 $HEALTH_CHECK_URL | jq '.deadlocks.healthy' | grep true)
+RESPONSE=$(wget -qO- --user "$(cat /etc/probe-secrets/username)" --password "$(cat /etc/probe-secrets/password)" --auth-no-challenge --no-cache --tries=1 --timeout=1 $HEALTH_CHECK_URL | jq '.deadlocks.healthy' | grep true)
 if [ "$RESPONSE" ] ; then
     echo "--> readiness is Alive"
     exit 0;
